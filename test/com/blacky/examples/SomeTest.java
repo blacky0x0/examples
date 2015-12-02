@@ -4,7 +4,10 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
+import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.*;
 
 
@@ -48,4 +51,30 @@ public class SomeTest {
         assertEquals(NUMBER_LONDON_ARTISTS, count);
     }
 
+    @Test
+    public void collecting() {
+        List<String> collected = Stream.of("a", "b", "c").collect(toList());
+
+        assertEquals(asList("a", "b", "c"), collected);
+    }
+
+    @Test
+    public void toUpperCase_viaFor() {
+        List<String> collected = new ArrayList<>();
+
+        for (String string : asList("a", "b", "hello")) {
+            collected.add(string.toUpperCase());
+        }
+
+        assertEquals(asList("A", "B", "HELLO"), collected);
+    }
+
+    @Test
+    public void toUpperCase_viaForEach() {
+        List<String> collected = Stream.of("a", "b", "hello")
+                .map(String::toUpperCase)
+                .collect(toList());
+
+        assertEquals(asList("A", "B", "HELLO"), collected);
+    }
 }
