@@ -1,0 +1,6 @@
+# Spring Boot Tutorial -> http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+
+$ mvn dependency:tree
+$ mvn spring-boot:run
+$ mvn package
+
