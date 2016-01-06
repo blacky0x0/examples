@@ -1,4 +1,4 @@
-package com.blacky.examples;
+package com.example;
 
 public class Artist {
 

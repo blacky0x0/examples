@@ -1,4 +1,4 @@
-package com.blacky.examples;
+package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,7 +52,7 @@ public class MockitoAnnotationTest {
         Mockito.verify(spyList).add("one");
         Mockito.verify(spyList).add("two");
         Mockito.verify(spyList, times(1)).add("one");
-        Mockito.verify(spyList, after(3000).times(1)).add("two");
+        Mockito.verify(spyList, timeout(3000).times(1)).add("two");
 
         assertEquals(2, spyList.size());
 

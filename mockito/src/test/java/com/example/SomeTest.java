@@ -1,4 +1,4 @@
-package com.blacky.examples;
+package com.example;
 
 import org.junit.Test;
 
