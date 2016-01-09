@@ -21,10 +21,12 @@ TRUNCATE another_book;
 INSERT INTO book (id, title)
 VALUES
   (1, 'Spring book'),
-  (2, 'spring Book');
+  (2, 'spring Book'),
+  (3, 'spring bOOk');
 
 INSERT INTO another_book (id, title)
 VALUES
   (1, 'spring book'),
-  (2, 'spring book');
+  (2, 'spring book'),
+  (3, 'spring book');
 
