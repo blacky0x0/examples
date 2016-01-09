@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -22,21 +23,34 @@ public class BookTest {
 
     @Test
     public void lowerCaseEquality() throws Exception {
-        System.out.println("================================");
-        System.out.println("================================");
-        System.err.format("Maximum id value is: %s\n", bookRepository.maxId());
+        long maxId = bookRepository.maxId();
 
-        int maxId = bookRepository.maxId();
+        System.out.println("================================");
+        System.out.println("================================");
+        System.err.format("Maximum id value is: %s\n", maxId);
+        System.out.flush();
 
         for (int i = 1; i <= maxId; i++) {
+            Thread.sleep(8);
             Book item = bookRepository.findOne(i);
+
+            if (Objects.isNull(item))
+                continue;
+
+            if (i % 10000 == 0)
+                System.out.println("> " + i);
+
             AnotherBook item2 = anotherBookRepository.findOne(i);
 
-            if (Objects.nonNull(item)) {
-                if (!item.getTitle().equals(item2.getTitle())) {
-                    System.err.format("ID: %d; `%s` != `%s`\n", item.getId(), item.getTitle(), item2.getTitle());
-                }
+            if (!item.getTitle().toLowerCase(Locale.ENGLISH).equals(item2.getTitle())) {
+                System.err.format("ID: %d; ::: `%s` ::: `%s` != `%s`\n",
+                        item.getId(), item.getTitle().toLowerCase(Locale.ENGLISH),
+                        item.getTitle(), item2.getTitle());
+                System.out.flush();
             }
+
+            item2 = null;
+            item = null;
         }
 
         System.out.flush();
