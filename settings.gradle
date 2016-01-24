@@ -1,3 +1,5 @@
+include 'jooq'
+include 'lowercase'
 include 'mockito'
 include 'mongo'
-include 'lowercase'
+include 'rest-api'
