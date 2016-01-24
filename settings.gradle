@@ -1,2 +1,3 @@
 include 'mockito'
 include 'mongo'
+include 'lowercase'
