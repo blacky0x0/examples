@@ -2,6 +2,10 @@ package com.example;
 
 public class Artist {
 
+    public static void main(String[] args) {
+        System.out.println("heeeeeelllloooooooo");
+    }
+
     private String fullName = "";
     private String from = "";
 
