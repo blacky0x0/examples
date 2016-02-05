@@ -11,7 +11,7 @@ public class TestApp {
 
         JdbcExample jdbcExample = ctx.getBean(JdbcExample.class);
         System.out.println(jdbcExample.getBook(1));
-
+        System.out.println(jdbcExample.getAuthor(1));
     }
 
 }

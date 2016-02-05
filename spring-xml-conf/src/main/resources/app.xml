@@ -9,14 +9,22 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="jdbcExample" class="com.example.jdbc.JdbcExample">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="mysqlDataSource" ref="mysqlDataSource"/>
+        <property name="postgresDataSource" ref="postgresDataSource"/>
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="postgresDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.postgres.driverClassName}"/>
+        <property name="url" value="${jdbc.postgres.url}"/>
+        <property name="username" value="${jdbc.postgres.username}"/>
+        <property name="password" value="${jdbc.postgres.password}"/>
     </bean>
 
     <context:property-placeholder location="jdbc.properties"/>
