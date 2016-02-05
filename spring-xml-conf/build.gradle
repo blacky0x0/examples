@@ -1,0 +1,25 @@
+apply {
+    plugin 'idea'
+    plugin 'application'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+mainClassName = 'com.example.TestApp'
+
+defaultTasks 'clean', 'run'
+
+dependencies {
+    compile 'org.springframework:spring-context:4.2.4.RELEASE'
+    compile 'org.springframework:spring-core:4.2.4.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.4.RELEASE'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile 'org.projectlombok:lombok:1.16.6'
+    runtime 'mysql:mysql-connector-java:5.1.38'
+}

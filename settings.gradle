@@ -3,3 +3,8 @@ include 'lowercase'
 include 'mockito'
 include 'mongo'
 include 'rest-api'
+include 'spring-conf'
+include 'spring-boot-conf'
+include 'spring-xml-conf'
+include 'spring-boot-xml-conf'
+

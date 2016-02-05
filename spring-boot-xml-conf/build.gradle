@@ -1,0 +1,16 @@
+apply {
+    plugin 'idea'
+    plugin 'application'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+
+}
