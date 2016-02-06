@@ -5,8 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({ DBConfig.class })
-@ComponentScan({ "com.example.service" })
+@Import({ DBConfig.class, JooqConfig.class })
+@ComponentScan({
+        "com.example.service",
+        "com.example.entity.postgres.tables.daos"
+})
 public class AppConfig {
 
 }

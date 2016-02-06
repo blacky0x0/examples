@@ -19,6 +19,8 @@ public class TestApp {
 
         System.out.println(jdbcExample.getBook(1));
         System.out.println(jdbcExample.getAuthor(1));
+
+        dataService.showDataJooq();
     }
 
 }
