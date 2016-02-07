@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="jdbcExample" class="com.example.jdbc.JdbcExample">
+        <property name="mysqlDataSource" ref="mysqlDataSource"/>
+        <property name="postgresDataSource" ref="postgresDataSource"/>
+    </bean>
+
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>
+        <property name="url" value="${jdbc.mysql.url}"/>
+        <property name="username" value="${jdbc.mysql.username}"/>
+        <property name="password" value="${jdbc.mysql.password}"/>
+    </bean>
+
+    <bean id="postgresDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.postgres.driverClassName}"/>
+        <property name="url" value="${jdbc.postgres.url}"/>
+        <property name="username" value="${jdbc.postgres.username}"/>
+        <property name="password" value="${jdbc.postgres.password}"/>
+    </bean>
+
+    <context:property-placeholder location="jdbc.properties"/>
+
+</beans>
