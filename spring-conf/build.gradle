@@ -19,6 +19,7 @@ dependencies {
     compile 'org.springframework:spring-context:4.2.4.RELEASE'
     compile 'org.springframework:spring-core:4.2.4.RELEASE'
     compile 'org.springframework:spring-jdbc:4.2.4.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.4.RELEASE'
     compile 'commons-dbcp:commons-dbcp:1.4'
     compile 'org.projectlombok:lombok:1.16.6'
     compile 'org.jooq:jooq:3.7.2'

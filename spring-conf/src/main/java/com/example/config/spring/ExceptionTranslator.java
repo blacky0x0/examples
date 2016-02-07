@@ -72,6 +72,8 @@ public class ExceptionTranslator extends DefaultExecuteListener {
         // [#4391] Translate only SQLExceptions
         if (ctx.sqlException() != null) {
             SQLDialect dialect = ctx.dialect();
+
+            /* Prefer product name, if available. */
             SQLExceptionTranslator translator = (dialect != null)
                     ? new SQLErrorCodeSQLExceptionTranslator(dialect.thirdParty().springDbName())
                     : new SQLStateSQLExceptionTranslator();
