@@ -1,6 +1,10 @@
 package com.example;
 
+import org.aopalliance.aop.Advice;
+import org.springframework.aop.Advisor;
+import org.springframework.aop.Pointcut;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 
 public class TestApp {
 
@@ -8,9 +12,14 @@ public class TestApp {
 
         MessageWriter target = new MessageWriter();
 
+        Pointcut pointCut = new SimpleStaticPointcut();
+        Advice advice = new MessageDecorator();
+        Advisor advisor = new DefaultPointcutAdvisor(pointCut, advice);
+
         ProxyFactory proxyFactory = new ProxyFactory();
         //proxyFactory.addAdvice(new MessageDecorator());
-        proxyFactory.addAdvice(new SimpleBeforeAdvice());
+        //proxyFactory.addAdvice(new SimpleBeforeAdvice());
+        proxyFactory.addAdvisor(advisor);
         proxyFactory.setTarget(target);
 
         MessageWriter proxy = (MessageWriter) proxyFactory.getProxy();
@@ -22,6 +31,7 @@ public class TestApp {
 
         System.out.println("\n\nProxied object:");
         proxy.writeMessage();
+        System.out.println("");
         proxy.writeHome();
     }
 
