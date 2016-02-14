@@ -7,6 +7,7 @@ public class MessageWriter {
         return "w o r l d";
     }
 
+    @MethodAdvice
     public String writeHome() {
         System.out.print("Home");
         return "h o m e";

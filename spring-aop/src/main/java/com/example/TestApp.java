@@ -6,6 +6,7 @@ import org.springframework.aop.Pointcut;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
+import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 
 public class TestApp {
 
@@ -13,9 +14,11 @@ public class TestApp {
 
         MessageWriter target = new MessageWriter();
 
-        NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
-        pointcut.addMethodName("writeMessage");
-        pointcut.addMethodName("writeHome");
+        AnnotationMatchingPointcut pointcut = AnnotationMatchingPointcut
+                .forMethodAnnotation(MethodAdvice.class);
+        //NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+        //pointcut.addMethodName("writeMessage");
+        //pointcut.addMethodName("writeHome");
         //Pointcut pointCut = new SimpleStaticPointcut();
         Advice advice = new MessageDecorator();
         Advisor advisor = new DefaultPointcutAdvisor(pointcut, advice);
