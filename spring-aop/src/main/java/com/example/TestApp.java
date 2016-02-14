@@ -9,7 +9,8 @@ public class TestApp {
         MessageWriter target = new MessageWriter();
 
         ProxyFactory proxyFactory = new ProxyFactory();
-        proxyFactory.addAdvice(new MessageDecorator());
+        //proxyFactory.addAdvice(new MessageDecorator());
+        proxyFactory.addAdvice(new SimpleBeforeAdvice());
         proxyFactory.setTarget(target);
 
         MessageWriter proxy = (MessageWriter) proxyFactory.getProxy();
