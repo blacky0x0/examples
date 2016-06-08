@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.erizo.gradle:jcstress-gradle-plugin:0.5'
+        classpath 'com.github.erizo.gradle:jcstress-core:1.0-20150729205107'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+task generate(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.openjdk.jcstress.tests.ReorderingWithVolatileTest'
+}
+
+apply {
+    plugin 'idea'
+    plugin 'jcstress'
+}
+
+dependencies {
+    compile 'com.github.erizo.gradle:jcstress-core:1.0-20150729205107'
+    compile 'com.github.erizo.gradle:jcstress-gradle-plugin:0.5'
+}
